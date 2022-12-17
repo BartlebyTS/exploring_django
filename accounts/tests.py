@@ -2,18 +2,15 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse, resolve
 
-from .forms import CustomUserCreationForm
-from .views import SignupPageView
-
 
 class CustomUserTests(TestCase):
     def test_create_user(self):
         User = get_user_model()
         user = User.objects.create_user(
-            username='william', email='wjimperial@mac.com', password='testpass123'
+            username="will", email="will@email.com", password="testpass123"
         )
-        self.assertEqual(user.username, 'william')
-        self.assertEqual(user.email, 'wjimperial@mac.com')
+        self.assertEqual(user.username, "will")
+        self.assertEqual(user.email, "will@email.com")
         self.assertTrue(user.is_active)
         self.assertFalse(user.is_staff)
         self.assertFalse(user.is_superuser)
@@ -21,17 +18,18 @@ class CustomUserTests(TestCase):
     def test_create_superuser(self):
         User = get_user_model()
         admin_user = User.objects.create_superuser(
-            username='superadmin', email='superadmin@email.com', password='testpass123'
+            username="superadmin", email="superadmin@email.com", password="testpass123"
         )
-        self.assertEqual(admin_user.username, 'superadmin')
-        self.assertEqual(admin_user.email, 'superadmin@email.com')
+        self.assertEqual(admin_user.username, "superadmin")
+        self.assertEqual(admin_user.email, "superadmin@email.com")
         self.assertTrue(admin_user.is_active)
         self.assertTrue(admin_user.is_staff)
         self.assertTrue(admin_user.is_superuser)
 
-class SignUpPageTests(TestCase):
-    username = 'newuser'
-    email = 'newuser@email.com'
+
+class SignupPageTests(TestCase):  # new
+    username = "newuser"
+    email = "newuser@email.com"
 
     def setUp(self):
         url = reverse("account_signup")
@@ -48,7 +46,3 @@ class SignUpPageTests(TestCase):
         self.assertEqual(get_user_model().objects.all().count(), 1)
         self.assertEqual(get_user_model().objects.all()[0].username, self.username)
         self.assertEqual(get_user_model().objects.all()[0].email, self.email)
-
-    def test_signup_view(self):
-        view = resolve("/accounts/signup/")
-        self.assertEqual(view.func.__name__, SignupPageView.as_view().__name__)
