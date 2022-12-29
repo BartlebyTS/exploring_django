@@ -13,7 +13,7 @@ class BookListView(LoginRequiredMixin, ListView):
     template_name = 'books/book_list.html'
     login_url = 'account_login'
 
-class BookDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
+class BookDetailView(LoginRequiredMixin, DetailView):
     model = Book
     context_object_name = 'book'
     template_name = 'books/book_detail.html'
@@ -32,19 +32,4 @@ class SearchResultsListView(ListView):
           Q(title__icontains=query) | Q(author__icontains=query)
         )
 
-class IPandAPIView(LoginRequiredMixin, ListView):
-    model = IP
-    context_object_name = 'IP_input'
-    template_name = 'IPandAPI/IPandAPI.html'
-    login_url = 'account_login'
-
-    def yourIP(request):
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-
-        if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        return HttpResponse("Welcome Home<br>You are visiting from:
-        {}".format(ip))
 

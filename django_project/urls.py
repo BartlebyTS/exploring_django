@@ -1,4 +1,4 @@
-"""djang0_project URL Configuration
+"""django_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -16,16 +16,20 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
-
+from django.urls import path, include, re_path
+from environs import Env
+from . import views
+env = Env()
+secret_admin_url = env('ADMIN_URL')
 urlpatterns = [
     # Django admin
-    path('jakes-secret-treehouse/', admin.site.urls),
+    path(secret_admin_url, admin.site.urls),
     # User management
     path('accounts/', include('allauth.urls')),
     # Local apps
-    path("", include('pages.urls')),
-    path('IP/', include('books.urls'))
+    re_path(r'^oauth/', include('social_django.urls', namespace='social')),
+    path("", include("pages.urls")),
+    path('IP/', views.home, name='IP'),
     path('books/', include('books.urls')),
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT

@@ -12,5 +12,5 @@
       {{  form|crispy }}
       <button class="btn btn-success" type="submit">Log In</button>
   </form>
-    <a href="{% provider_login_url 'github' %}">To Log In via Github click here</a>
+    <a href="{% url 'social:begin' 'github' %}" class="btn btn-link btn-lg active btn-block">Sign in with GitHub</a>
 {%  endblock content %}

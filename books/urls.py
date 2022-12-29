@@ -7,5 +7,4 @@ urlpatterns = [
     path('<uuid:pk>', BookDetailView.as_view(), name='book_detail'),
     path('search/', SearchResultsListView.as_view(),
         name='search_results'),
-    path('IP', IPandAPIView.as_view(), name='IP_input')
 ]

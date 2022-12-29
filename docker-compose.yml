@@ -3,9 +3,9 @@ version: "3"
 services:
   web:
     build: .
-    command: python /ch4-bookstore/manage.py runserver 0.0.0.0:8000
+    command: gunicorn django_project.wsgi -b 0.0.0.0:8000
     volumes:
-      - .:/ch4-bookstore
+      - .:/django_website
     ports:
       - 8000:8000
     depends_on:
