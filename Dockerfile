@@ -7,7 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set work directory
-WORKDIR /ch4-bookstore
+WORKDIR /django_website
 
 # Install dependencies
 COPY ./requirements.txt .
