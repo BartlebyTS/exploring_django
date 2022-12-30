@@ -163,7 +163,7 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"  # new
 CRISPY_TEMPLATE_PACK = "bootstrap5"  # new
 
-LOGIN_REDIRECT_URL = "http://localhost:8000"
+LOGIN_REDIRECT_URL = "https://hidden-temple-30073.herokuapp.com/"
 ACCOUNT_LOGOUT_REDIRECT = 'home'
 SITE_ID = 1
 # django-allauth config

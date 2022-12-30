@@ -1,6 +1,7 @@
 {% extends '_base.html' %}
 
 {% block content %}
+    <p><br></p>
   <h2>GEO API</h2>
   <p>Your ip address is <strong>{{ ip }}</strong>, and you are probably in <strong>{{ country }}</strong> right now.</p>
   <p>This information {{ is_cached|yesno:"was,wasn't" }} cached.</p>
