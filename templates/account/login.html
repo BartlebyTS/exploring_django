@@ -3,11 +3,11 @@
 {% load crispy_forms_tags %}
 {% load socialaccount %}
 
-<p><br><br><br><br></p>
 
 {% block title %}Log In{% endblock title %}
 
 {%  block content %}
+  <p><br><br></p>
   <h2>Log In</h2>
   <form method="post">
       {%  csrf_token %}

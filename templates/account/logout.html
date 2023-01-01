@@ -2,11 +2,11 @@
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 
-<p><br><br><br><br></p>
 
 {% block title %}Log Out{% endblock %}
 
 {% block content %}
+    <p><br><br></p>
     <h1>Log Out</h1>
     <p>Are you sure you want to log out?</p>
     <form method="post" action="{% url 'account_logout' %}">

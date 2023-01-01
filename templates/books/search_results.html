@@ -1,7 +1,6 @@
 <!-- templates/books/search_results.html -->
 {% extends '_base.html' %}
 
-<p><br><br><br><br></p>
 
 {% block title %}Search{% endblock title %}
 
@@ -9,6 +8,7 @@
   <h1>Search Results</h1>
   {% for book in book_list %}
     <div>
+        <p><br><br></p>
         <h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
         <p>Author: {{ book.author }}</p>
     </div>
